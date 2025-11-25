@@ -206,11 +206,11 @@ export default function Demo() {
             </Link>
             
             <div className="hidden md:flex items-center gap-8">
-              <Link href="/agents">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">AI Agents</a>
+              <Link href="/agents" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                AI Agents
               </Link>
-              <Link href="/pricing">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
+              <Link href="/pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Pricing
               </Link>
             </div>
           </div>

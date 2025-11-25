@@ -363,3 +363,6 @@
 - [x] Create individual blog article page template
 - [x] Add blog link to navigation
 - [x] Test blog functionality
+
+## Bug Fixes
+- [x] Fix nested anchor tag error on /demo page
