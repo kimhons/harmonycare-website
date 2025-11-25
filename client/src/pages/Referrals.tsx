@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
 import { REWARD_TIERS, getCurrentTier, getNextTier, getProgressToNextTier } from "@/../../shared/referralRewards";
+import ShareTemplates from "@/components/ShareTemplates";
+import type { ShareTemplateVariables } from "@/../../shared/shareTemplates";
 
 export default function Referrals() {
   const [, setLocation] = useLocation();
@@ -317,6 +319,21 @@ export default function Referrals() {
               </div>
             </CardContent>
           </Card>
+        </div>
+        
+        {/* Share Templates */}
+        <div>
+          <h2 className="text-2xl font-bold mb-4">📣 Share Your Referral Code</h2>
+          <ShareTemplates
+            variables={{
+              referralCode,
+              referrerName: user.name || 'Founding Member',
+              facilityName: referredUsers[0]?.facilityName || 'Your Facility',
+              tier: currentTier?.name || 'Founding Member',
+              totalReferrals,
+              referralLink,
+            } as ShareTemplateVariables}
+          />
         </div>
         
         {/* Your Referrals */}
