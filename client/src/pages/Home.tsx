@@ -182,9 +182,11 @@ export default function Home() {
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="rounded-full px-8 text-base font-semibold border-white/20 hover:bg-white/10">
-                Join Waitlist
-              </Button>
+              <Link href="/signup">
+                <Button size="lg" variant="outline" className="rounded-full px-8 text-base font-semibold border-white/20 hover:bg-white/10">
+                  Join Waitlist
+                </Button>
+              </Link>
             </div>
 
             {/* Trust Indicators */}
@@ -458,9 +460,11 @@ export default function Home() {
                   Secure Founding Member Access
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="rounded-full px-8">
-                Join Early Access Waitlist
-              </Button>
+              <Link href="/signup">
+                <Button size="lg" variant="outline" className="rounded-full px-8">
+                  Join Early Access Waitlist
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

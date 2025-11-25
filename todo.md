@@ -197,3 +197,16 @@
 - [x] Add "Coming Q2 2025" or similar timeline indicators
 - [x] Update founding member benefits to include early access perks
 - [x] Test all updated messaging across pages
+
+## Waitlist Signup Page
+- [x] Create /signup route and page component
+- [x] Design form with email, name, facility name fields
+- [x] Add facility type dropdown (Group Home, ICF-ID, Assisted Living, etc.)
+- [x] Add resident count input field
+- [x] Add founding member tier selection
+- [x] Implement form validation
+- [x] Add success confirmation state
+- [x] Update navigation and CTA buttons to link to /signup
+- [x] Test form submission and validation
+- [x] Add feature questionnaire section with checkboxes for key features/agents
+- [x] Add text area for additional needs or custom requests

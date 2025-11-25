@@ -10,11 +10,13 @@ import IcfId from "./pages/IcfId";
 import Pricing from "./pages/Pricing";
 import Agents from "./pages/Agents";
 import Demo from "./pages/Demo";
+import Signup from "./pages/Signup";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/signup"} component={Signup} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/agents" component={Agents} />
       <Route path="/demo" component={Demo} />
