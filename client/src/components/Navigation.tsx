@@ -16,15 +16,13 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-14">
             <Link href="/">
               <div className="flex items-center cursor-pointer hover:opacity-80 transition-opacity">
-                <img src={APP_LOGO} alt="HarmonyCare" className="h-8" />
+                 <img src={APP_LOGO} alt="HarmonyCare" className="h-12" />
               </div>
             </Link>
             
             <div className="hidden md:flex items-center gap-8">
-              <Link href="/agents">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  AI Agents
-                </a>
+              <Link href="/agents" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                AI Agents
               </Link>
               
               {/* Solutions Dropdown */}
@@ -40,26 +38,20 @@ export default function Navigation() {
                 
                 {solutionsOpen && (
                   <div className="absolute top-full left-0 mt-2 w-56 bg-card border border-border rounded-lg shadow-lg overflow-hidden">
-                    <Link href="/solutions/group-homes">
-                      <a className="block px-4 py-3 hover:bg-accent/10 transition-colors">
-                        <div className="font-medium text-sm text-foreground">Group Homes</div>
-                        <div className="text-xs text-muted-foreground mt-0.5">For 1-10 residents</div>
-                      </a>
+                    <Link href="/solutions/group-homes" className="block px-4 py-3 hover:bg-accent/10 transition-colors">
+                      <div className="font-medium text-sm text-foreground">Group Homes</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">For 1-10 residents</div>
                     </Link>
-                    <Link href="/solutions/icf-id">
-                      <a className="block px-4 py-3 hover:bg-accent/10 transition-colors border-t border-border">
-                        <div className="font-medium text-sm text-foreground">ICF-ID Facilities</div>
-                        <div className="text-xs text-muted-foreground mt-0.5">For 16-50+ residents</div>
-                      </a>
+                    <Link href="/solutions/icf-id" className="block px-4 py-3 hover:bg-accent/10 transition-colors border-t border-border">
+                      <div className="font-medium text-sm text-foreground">ICF-ID Facilities</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">For 16-50+ residents</div>
                     </Link>
                   </div>
                 )}
               </div>
               
-              <Link href="/pricing">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Pricing
-                </a>
+              <Link href="/pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Pricing
               </Link>
               <a href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Resources
@@ -67,11 +59,12 @@ export default function Navigation() {
             </div>
 
             <div className="flex items-center gap-3">
-              <Link href="/demo">
-                <Button className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-                  Schedule Demo
-                </Button>
-              </Link>
+              <Button 
+                className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-full px-6"
+                onClick={() => window.location.href = '/demo'}
+              >
+                Schedule Demo
+              </Button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2 hover:bg-accent/10 rounded-lg transition-colors"
@@ -154,14 +147,15 @@ export default function Navigation() {
             </nav>
 
             <div className="mt-auto pt-6 border-t border-border">
-              <Link href="/demo">
-                <Button 
-                  className="w-full bg-primary hover:bg-primary/90 text-white rounded-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Schedule Demo
-                </Button>
-              </Link>
+              <Button 
+                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  window.location.href = '/demo';
+                }}
+              >
+                Schedule Demo
+              </Button>
             </div>
           </div>
         </div>

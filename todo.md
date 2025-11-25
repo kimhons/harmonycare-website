@@ -210,3 +210,23 @@
 - [x] Test form submission and validation
 - [x] Add feature questionnaire section with checkboxes for key features/agents
 - [x] Add text area for additional needs or custom requests
+
+## Logo Size Fix
+- [x] Increase logo size in Navigation component
+
+## Update Launch Date
+- [x] Change all Q2 2025 references to Q1 2026
+
+## Backend Upgrade for Email Integration
+- [x] Upgrade project to web-db-user feature
+- [x] Fix Home.tsx merge conflict
+- [x] Create database schema for signups table
+- [x] Implement signup API endpoint
+- [x] Integrate email service (Resend)
+- [x] Create confirmation email template
+- [x] Update frontend form to call API endpoint
+- [ ] Test signup flow with email confirmation
+
+## Fix Nested Anchor Tags Error
+- [x] Fix nested <a> tags in Home.tsx (Link wrapping Button)
+- [x] Fix nested anchors in Navigation component

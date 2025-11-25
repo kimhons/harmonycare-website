@@ -6,6 +6,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import { useState } from "react";
+import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -23,6 +25,9 @@ export default function Signup() {
   
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const signupMutation = trpc.signup.create.useMutation();
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -47,16 +52,37 @@ export default function Signup() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (validateForm()) {
-      // In a real app, this would send to backend
-      console.log("Form submitted:", formData);
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      await signupMutation.mutateAsync({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        facilityName: formData.facilityName,
+        facilityType: formData.facilityType,
+        residentCount: Number(formData.residentCount),
+        tier: formData.tier,
+        interestedFeatures: formData.interestedFeatures.length > 0 ? formData.interestedFeatures : undefined,
+        additionalNeeds: formData.additionalNeeds || undefined,
+      });
+      
       setSubmitted(true);
+      toast.success("Welcome to HarmonyCare! Check your email for confirmation.");
       
       // Scroll to top to show success message
       window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (error: any) {
+      console.error("Signup error:", error);
+      toast.error(error.message || "Failed to submit signup. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -153,7 +179,7 @@ export default function Signup() {
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Join the exclusive group of forward-thinking care facilities locking in <strong>56-65% off</strong> regular pricing forever. Launch: Q2 2025.
+            Join the exclusive group of forward-thinking care facilities locking in <strong>56-65% off</strong> regular pricing forever. Launch: Q1 2026.
           </p>
         </div>
       </section>
@@ -432,10 +458,11 @@ export default function Signup() {
                 <Button 
                   type="submit" 
                   size="lg" 
+                  disabled={isSubmitting}
                   className="w-full bg-primary hover:bg-primary/90 text-white rounded-full text-lg"
                 >
-                  Secure My Founding Member Spot
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  {isSubmitting ? "Submitting..." : "Secure My Founding Member Spot"}
+                  {!isSubmitting && <ArrowRight className="ml-2 w-5 h-5" />}
                 </Button>
                 
                 <p className="text-xs text-center text-muted-foreground mt-4">

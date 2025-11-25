@@ -1,12 +1,17 @@
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Heart, Sparkles, Shield, Brain, Calendar, Users, FileText, TrendingUp, Award, CheckCircle2, Play, ArrowRight, Star, Briefcase, UserCheck, Wrench, UtensilsCrossed, Truck, Lock, Zap } from "lucide-react";
 import { APP_TITLE } from "@/const";
 import VideoModal from "@/components/VideoModal";
 import Navigation from "@/components/Navigation";
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const agents = [
     {
@@ -152,7 +157,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-in-up delay-100">
-              Join the founding members securing exclusive early access to 20 autonomous AI agents that will reduce paperwork by 70%, ensure 100% compliance, and let caregivers focus on what matters most: caring. <strong>Launching Q2 2025.</strong>
+              Join the founding members securing exclusive early access to 20 autonomous AI agents that will reduce paperwork by 70%, ensure 100% compliance, and let caregivers focus on what matters most: caring. <strong>Launching Q1 2026.</strong>
             </p>
 
             {/* Video Container */}
@@ -176,17 +181,13 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-300">
-              <Link href="/demo">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-base font-semibold">
-                  Reserve Your Spot
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-              <Link href="/signup">
-                <Button size="lg" variant="outline" className="rounded-full px-8 text-base font-semibold border-white/20 hover:bg-white/10">
-                  Join Waitlist
-                </Button>
-              </Link>
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-base font-semibold" onClick={() => window.location.href = '/demo'}>
+                Reserve Your Spot
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-full px-8 text-base font-semibold border-white/20 hover:bg-white/10" onClick={() => window.location.href = '/signup'}>
+                Join Waitlist
+              </Button>
             </div>
 
             {/* Trust Indicators */}
@@ -280,12 +281,10 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/agents">
-              <Button variant="outline" size="lg" className="rounded-full">
-                Explore All 20 Agents
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
+            <Button variant="outline" size="lg" className="rounded-full" onClick={() => window.location.href = '/agents'}>
+              Explore All 20 Agents
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
           </div>
         </div>
       </section>
@@ -455,16 +454,12 @@ export default function Home() {
               Join the future of residential care management. Schedule a personalized demo today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/demo">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
-                  Secure Founding Member Access
-                </Button>
-              </Link>
-              <Link href="/signup">
-                <Button size="lg" variant="outline" className="rounded-full px-8">
-                  Join Early Access Waitlist
-                </Button>
-              </Link>
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8" onClick={() => window.location.href = '/demo'}>
+                Secure Founding Member Access
+              </Button>
+              <Button size="lg" variant="outline" className="rounded-full px-8" onClick={() => window.location.href = '/signup'}>
+                Join Early Access Waitlist
+              </Button>
             </div>
           </div>
         </div>
