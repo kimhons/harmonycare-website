@@ -181,3 +181,19 @@
 - [x] Add trust badges to ICF-ID solutions page (using same design)
 - [x] Ensure responsive design for mobile
 - [x] Test all pages with trust badges and new logo
+
+## Logo Display Fix
+- [x] Update Navigation component to import and use APP_LOGO
+- [x] Replace gradient icon with actual logo image
+- [x] Test logo display across all pages
+
+## Pre-Launch Early Signup Messaging
+- [x] Update homepage hero to clarify pre-launch status
+- [x] Change CTAs from "Schedule Demo" to "Join Waitlist" or "Reserve Your Spot"
+- [x] Update pricing page to show "Early Access Pricing" and launch timeline
+- [x] Add expected launch date/timeline messaging (Q2 2025)
+- [x] Update demo page to reflect early signup process (CTAs updated)
+- [x] Change solutions pages CTAs to early access language
+- [x] Add "Coming Q2 2025" or similar timeline indicators
+- [x] Update founding member benefits to include early access perks
+- [x] Test all updated messaging across pages

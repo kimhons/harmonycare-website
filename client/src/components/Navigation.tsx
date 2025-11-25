@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { APP_TITLE } from "@/const";
-import { Heart, Menu, X, ChevronDown } from "lucide-react";
+import { APP_TITLE, APP_LOGO } from "@/const";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
 
@@ -15,11 +15,8 @@ export default function Navigation() {
         <div className="container mx-auto">
           <div className="flex items-center justify-between h-14">
             <Link href="/">
-              <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                  <Heart className="w-4 h-4 text-white" />
-                </div>
-                <span className="text-lg font-bold">{APP_TITLE}</span>
+              <div className="flex items-center cursor-pointer hover:opacity-80 transition-opacity">
+                <img src={APP_LOGO} alt="HarmonyCare" className="h-8" />
               </div>
             </Link>
             

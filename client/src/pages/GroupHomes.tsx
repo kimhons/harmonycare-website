@@ -246,7 +246,7 @@ export default function GroupHomes() {
 
             <Link href="/demo">
               <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-                Schedule Demo
+                Reserve Your Spot
               </Button>
             </Link>
           </div>
@@ -274,7 +274,7 @@ export default function GroupHomes() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/demo">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
-                  Schedule Group Home Demo
+                  Reserve Founding Member Access
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </Link>
@@ -571,7 +571,7 @@ export default function GroupHomes() {
               </div>
 
               <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-full" size="lg">
-                Start Free Trial
+                Join Waitlist
               </Button>
             </Card>
 
@@ -624,7 +624,7 @@ export default function GroupHomes() {
               </div>
 
               <Button className="w-full rounded-full" variant="outline" size="lg">
-                Schedule Demo
+                Reserve Your Spot
               </Button>
             </Card>
           </div>
@@ -694,12 +694,12 @@ export default function GroupHomes() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/demo">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
-                Schedule Your Demo
+                Secure Early Access
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
             <Button size="lg" variant="outline" className="rounded-full px-8">
-              Start 30-Day Free Trial
+              Join Early Access Waitlist
             </Button>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">

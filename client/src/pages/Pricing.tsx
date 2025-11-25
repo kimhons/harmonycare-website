@@ -51,7 +51,7 @@ export default function Pricing() {
         "Dedicated account manager",
         "White-glove migration",
       ],
-      cta: "Start Free Trial",
+      cta: "Reserve Spot",
       popular: false,
     },
     {
@@ -78,7 +78,7 @@ export default function Pricing() {
         "Custom AI agent development",
         "White-label options",
       ],
-      cta: "Schedule Demo",
+      cta: "Join Waitlist",
       popular: true,
     },
     {
@@ -147,7 +147,7 @@ export default function Pricing() {
         <div className="container mx-auto max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-amber-700 dark:text-amber-400 text-sm font-semibold mb-6 animate-pulse">
             <Sparkles className="w-4 h-4" />
-            <span>🔥 Founding Member Pricing - Limited Time Only</span>
+            <span>🔥 Founding Member Early Access - Launching Q2 2025</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Lock In{" "}
@@ -625,18 +625,18 @@ export default function Pricing() {
       <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-primary/5 to-background">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Transform Your Facility?
+            Secure Your Founding Member Status
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join hundreds of care facilities saving time, reducing costs, and improving resident outcomes
+            Lock in exclusive early access pricing and be among the first to transform your facility when we launch in Q2 2025
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
-              Start 30-Day Free Trial
+              Reserve Founding Member Spot
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button size="lg" variant="outline" className="rounded-full px-8 border-border hover:bg-accent/10">
-              Schedule a Demo
+              Join Early Access Waitlist
             </Button>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">

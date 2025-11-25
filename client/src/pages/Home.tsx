@@ -138,8 +138,8 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 rounded-full px-5 py-2 mb-8 animate-fade-in">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-accent">20 AI Agents • Available Now</span>
+              <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-accent">Pre-Launch • Early Access Sign-Up</span>
             </div>
 
             {/* Headline */}
@@ -152,7 +152,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-in-up delay-100">
-              20 autonomous AI agents working 24/7 to reduce paperwork by 70%, ensure 100% compliance, and let caregivers focus on what matters most: caring.
+              Join the founding members securing exclusive early access to 20 autonomous AI agents that will reduce paperwork by 70%, ensure 100% compliance, and let caregivers focus on what matters most: caring. <strong>Launching Q2 2025.</strong>
             </p>
 
             {/* Video Container */}
@@ -178,12 +178,12 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up delay-300">
               <Link href="/demo">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 text-base font-semibold">
-                  Schedule Your Demo
+                  Reserve Your Spot
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
               <Button size="lg" variant="outline" className="rounded-full px-8 text-base font-semibold border-white/20 hover:bg-white/10">
-                Start Free Trial
+                Join Waitlist
               </Button>
             </div>
 
@@ -455,11 +455,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/demo">
                 <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
-                  Schedule Personalized Demo
+                  Secure Founding Member Access
                 </Button>
               </Link>
               <Button size="lg" variant="outline" className="rounded-full px-8">
-                Start 30-Day Free Trial
+                Join Early Access Waitlist
               </Button>
             </div>
           </div>
