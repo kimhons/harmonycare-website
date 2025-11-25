@@ -366,3 +366,34 @@
 
 ## Bug Fixes
 - [x] Fix nested anchor tag error on /demo page
+
+## Marketing Video Script
+- [x] Create 2-3 minute animated video script for homepage
+- [x] Include scene descriptions, voiceover, and visual directions
+- [x] Deliver script document to user
+
+## Video Script Optimization
+- [x] Research Google Flow documentation
+- [x] Research video design best practices for maximum impact
+- [x] Redesign video script based on findings
+- [x] Deliver optimized video script
+
+## Video Script Update
+- [x] Review all HarmonyCare features from website
+- [x] Rewrite script to showcase comprehensive automation platform
+- [x] Highlight top features beyond paperwork
+- [x] Deliver updated script
+
+## Video Storyboard
+- [x] Create detailed visual storyboard for 11-feature video
+- [x] Include frame-by-frame breakdowns for each AI agent
+- [x] Specify visual elements, transitions, and animations
+- [x] Deliver storyboard document
+
+## Deployment Preparation
+- [x] Organize video production materials into versioned archive
+- [x] Create deployment documentation and checklist
+- [x] Prepare website for Vercel deployment
+- [x] Review all features and ensure completion
+- [ ] Save final checkpoint
+- [ ] Deliver deployment guide to user
