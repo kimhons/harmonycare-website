@@ -6,6 +6,7 @@ import { publicProcedure, router } from "./_core/trpc";
 import { createSignup, getAllSignups } from "./db";
 import { sendWelcomeEmail } from "./email";
 import { getCampaignStats } from "./emailCampaign";
+import { validateReferralCode, createReferral, generateUniqueReferralCode } from "./referral";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -157,18 +158,48 @@ export const appRouter = router({
           utmCampaign: z.string().optional(),
           utmTerm: z.string().optional(),
           utmContent: z.string().optional(),
+          // Referral code
+          referralCode: z.string().optional(),
         })
       )
       .mutation(async ({ input }) => {
+        // Validate referral code if provided
+        let referrerSignupId: number | null = null;
+        if (input.referralCode) {
+          referrerSignupId = await validateReferralCode(input.referralCode);
+          if (!referrerSignupId) {
+            throw new Error('Invalid referral code');
+          }
+        }
+
+        // Generate unique referral code for new signup
+        const ownReferralCode = await generateUniqueReferralCode();
+
         // Store interested features as JSON string
         const signupData = {
           ...input,
           interestedFeatures: input.interestedFeatures
             ? JSON.stringify(input.interestedFeatures)
             : null,
+          usedReferralCode: input.referralCode || null,
+          ownReferralCode,
         };
 
-        await createSignup(signupData);
+        const newSignupId = await createSignup(signupData);
+
+        // Create referral relationship if code was used
+        if (referrerSignupId && newSignupId) {
+          try {
+            await createReferral({
+              referrerSignupId,
+              referredSignupId: newSignupId,
+              referralCode: input.referralCode!,
+            });
+          } catch (referralError) {
+            console.error('[Signup] Failed to create referral:', referralError);
+            // Don't fail the signup if referral tracking fails
+          }
+        }
 
         // Send welcome email
         try {
@@ -187,6 +218,20 @@ export const appRouter = router({
         return {
           success: true,
           message: "Thank you for signing up! Check your email for confirmation.",
+        };
+      }),
+  }),
+
+  referral: router({
+    validate: publicProcedure
+      .input(z.object({ code: z.string() }))
+      .query(async ({ input }) => {
+        const referrerSignupId = await validateReferralCode(input.code);
+        return {
+          valid: referrerSignupId !== null,
+          message: referrerSignupId
+            ? 'Valid referral code! You\'ll both receive exclusive rewards.'
+            : 'Invalid referral code. Please check and try again.',
         };
       }),
   }),

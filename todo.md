@@ -275,11 +275,13 @@
 - [x] Add referrals table to database schema
 - [x] Add referral code field to signups table
 - [x] Create referral code generation function
-- [ ] Build referral tracking API endpoints
-- [ ] Add referral code input to signup form
+- [x] Build referral tracking API endpoints (validate code, track referral)
+- [x] Add referral code input to signup form
+- [x] Connect frontend to backend API
+- [x] Test referral code validation and tracking
+- [ ] Update admin dashboard to show referral attribution
 - [ ] Create referral dashboard page for founding members
 - [ ] Display referral stats and rewards
-- [ ] Test referral tracking flow
 
 ## Vercel Cron Job for Email Campaign
 - [ ] Create vercel.json configuration file

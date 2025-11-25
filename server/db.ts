@@ -92,14 +92,15 @@ export async function getUserByOpenId(openId: string) {
 /**
  * Insert a new signup into the database
  */
-export async function createSignup(signup: InsertSignup) {
+export async function createSignup(signup: InsertSignup): Promise<number> {
   const db = await getDb();
   if (!db) {
     throw new Error("Database not available");
   }
 
   const result = await db.insert(signups).values(signup);
-  return result;
+  // Return the insertId from the result
+  return Number(result[0].insertId);
 }
 
 /**

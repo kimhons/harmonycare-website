@@ -10,6 +10,7 @@ import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
 import { getCurrentUTMParams, initUTMTracking } from "@/lib/utm";
 
+
 export default function Signup() {
   // Initialize UTM tracking on mount
   useEffect(() => {
@@ -27,13 +28,55 @@ export default function Signup() {
     tier: "",
     interestedFeatures: [] as string[],
     additionalNeeds: "",
+    referralCode: "",
   });
   
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [referralValidation, setReferralValidation] = useState<{
+    status: 'idle' | 'checking' | 'valid' | 'invalid';
+    message: string;
+  }>({ status: 'idle', message: '' });
   
   const signupMutation = trpc.signup.create.useMutation();
+  
+  // Debounced referral code validation
+  useEffect(() => {
+    if (!formData.referralCode || formData.referralCode.length < 8) {
+      setReferralValidation({ status: 'idle', message: '' });
+      return;
+    }
+    
+    setReferralValidation({ status: 'checking', message: '' });
+    
+    const timer = setTimeout(async () => {
+      try {
+        const result = await fetch(`/api/trpc/referral.validate?input=${encodeURIComponent(JSON.stringify({ code: formData.referralCode }))}`);
+        const data = await result.json();
+        
+        if (data.result?.data?.valid) {
+          setReferralValidation({
+            status: 'valid',
+            message: data.result.data.message,
+          });
+        } else {
+          setReferralValidation({
+            status: 'invalid',
+            message: data.result?.data?.message || 'Invalid referral code',
+          });
+        }
+      } catch (error) {
+        console.error('Referral validation error:', error);
+        setReferralValidation({
+          status: 'invalid',
+          message: 'Unable to validate code. Please try again.',
+        });
+      }
+    }, 500);
+    
+    return () => clearTimeout(timer);
+  }, [formData.referralCode]);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -80,6 +123,7 @@ export default function Signup() {
         tier: formData.tier,
         interestedFeatures: formData.interestedFeatures.length > 0 ? formData.interestedFeatures : undefined,
         additionalNeeds: formData.additionalNeeds || undefined,
+        referralCode: formData.referralCode || undefined,
         ...utmParams, // Include UTM tracking data
       });
       
@@ -259,6 +303,32 @@ export default function Signup() {
                       placeholder="(555) 123-4567"
                     />
                   </div>
+                </div>
+                
+                <div className="mt-4">
+                  <Label htmlFor="referralCode">Referral Code (Optional)</Label>
+                  <Input
+                    id="referralCode"
+                    value={formData.referralCode}
+                    onChange={(e) => handleInputChange("referralCode", e.target.value.toUpperCase())}
+                    placeholder="HARMONY-XXXX"
+                    className={referralValidation.status === 'invalid' ? "border-destructive" : referralValidation.status === 'valid' ? "border-green-500" : ""}
+                  />
+                  {referralValidation.status === 'checking' && (
+                    <p className="text-sm text-muted-foreground mt-1">Validating code...</p>
+                  )}
+                  {referralValidation.status === 'valid' && (
+                    <p className="text-sm text-green-600 dark:text-green-400 mt-1 flex items-center gap-1">
+                      <CheckCircle2 className="w-4 h-4" />
+                      {referralValidation.message}
+                    </p>
+                  )}
+                  {referralValidation.status === 'invalid' && (
+                    <p className="text-sm text-destructive mt-1">{referralValidation.message}</p>
+                  )}
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Have a referral code from a founding member? Enter it here for exclusive rewards.
+                  </p>
                 </div>
               </div>
 
