@@ -296,3 +296,14 @@
 
 ## Fix Nested Anchor Tags
 - [x] Find and fix nested <a> tags in homepage or navigation
+
+## Founding Member Referral Dashboard & Rewards
+- [x] Define reward tiers and milestones
+- [x] Add rewards tracking to database schema
+- [x] Create referral email templates (welcome, milestone, monthly summary)
+- [x] Build /referrals page for founding members
+- [x] Display personal referral code and stats
+- [x] Show reward progress bars and badges
+- [x] Add shareable links with UTM tracking
+- [x] Implement automated referral email notifications
+- [x] Test complete referral program flow

@@ -3,11 +3,15 @@ import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
-import { createSignup, getAllSignups } from "./db";
+import { createSignup, getAllSignups, getDb } from "./db";
 import { sendWelcomeEmail } from "./email";
+import { sendReferralWelcomeEmail, sendReferralSuccessEmail, sendMilestoneEmail } from "./referralEmails";
+import { getCurrentTier, REWARD_TIERS } from "../shared/referralRewards";
 import { getCampaignStats } from "./emailCampaign";
 import { validateReferralCode, createReferral, generateUniqueReferralCode } from "./referral";
 import { getReferralAnalytics } from "./referralAnalytics";
+import { signups, referrals } from "../drizzle/schema";
+import { eq } from "drizzle-orm";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -219,6 +223,68 @@ export const appRouter = router({
           console.error('[Signup] Failed to send welcome email:', emailError);
           // Don't fail the signup if email fails
         }
+        
+        // Send referral welcome email with their code
+        try {
+          await sendReferralWelcomeEmail({
+            email: input.email,
+            firstName: input.firstName,
+            referralCode: ownReferralCode,
+          });
+        } catch (emailError) {
+          console.error('[Signup] Failed to send referral welcome email:', emailError);
+        }
+        
+        // If they used a referral code, notify the referrer
+        if (referrerSignupId && newSignupId) {
+          try {
+            // Get referrer details
+            const db = await getDb();
+            if (db) {
+              const referrerData = await db
+                .select()
+                .from(signups)
+                .where(eq(signups.id, referrerSignupId))
+                .limit(1);
+              
+              if (referrerData.length > 0) {
+                const referrer = referrerData[0];
+                
+                // Count total referrals for referrer
+                const referrerReferrals = await db
+                  .select()
+                  .from(referrals)
+                  .where(eq(referrals.referrerSignupId, referrerSignupId));
+                
+                const totalReferrals = referrerReferrals.length;
+                
+                // Send success notification
+                await sendReferralSuccessEmail({
+                  referrerEmail: referrer.email,
+                  referrerFirstName: referrer.firstName,
+                  referredName: `${input.firstName} ${input.lastName}`,
+                  totalReferrals,
+                });
+                
+                // Check if they just hit a milestone
+                const previousTier = getCurrentTier(totalReferrals - 1);
+                const currentTier = getCurrentTier(totalReferrals);
+                
+                if (currentTier && currentTier.id !== previousTier?.id) {
+                  // They just unlocked a new tier!
+                  await sendMilestoneEmail({
+                    email: referrer.email,
+                    firstName: referrer.firstName,
+                    tier: currentTier,
+                    totalReferrals,
+                  });
+                }
+              }
+            }
+          } catch (emailError) {
+            console.error('[Signup] Failed to send referrer notification:', emailError);
+          }
+        }
 
         return {
           success: true,
@@ -239,6 +305,61 @@ export const appRouter = router({
             : 'Invalid referral code. Please check and try again.',
         };
       }),
+    
+    myReferrals: publicProcedure.query(async ({ ctx }) => {
+      if (!ctx.user) {
+        throw new Error('Unauthorized');
+      }
+      
+      // Get user's signup record to find their referral code
+      const db = await getDb();
+      if (!db) {
+        throw new Error('Database not available');
+      }
+      
+      const userSignup = await db
+        .select()
+        .from(signups)
+        .where(eq(signups.email, ctx.user.email || ''))
+        .limit(1);
+      
+      if (userSignup.length === 0) {
+        throw new Error('Signup record not found');
+      }
+      
+      const signup = userSignup[0];
+      const referralCode = signup.ownReferralCode || '';
+      
+      // Get all referrals made by this user
+      const userReferrals = await db
+        .select()
+        .from(referrals)
+        .where(eq(referrals.referrerSignupId, signup.id));
+      
+      // Get details of referred users
+      const referredUsers = await Promise.all(
+        userReferrals.map(async (ref) => {
+          const referred = await db
+            .select({
+              name: signups.firstName,
+              facilityName: signups.facilityName,
+              tier: signups.tier,
+              createdAt: signups.createdAt,
+            })
+            .from(signups)
+            .where(eq(signups.id, ref.referredSignupId))
+            .limit(1);
+          
+          return referred[0];
+        })
+      );
+      
+      return {
+        referralCode,
+        totalReferrals: userReferrals.length,
+        referredUsers: referredUsers.filter(Boolean),
+      };
+    }),
   }),
 });
 
