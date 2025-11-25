@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertSignup, InsertUser, signups, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -111,5 +111,5 @@ export async function getAllSignups() {
     throw new Error("Database not available");
   }
 
-  return await db.select().from(signups).orderBy(signups.createdAt);
+  return await db.select().from(signups).orderBy(desc(signups.createdAt));
 }

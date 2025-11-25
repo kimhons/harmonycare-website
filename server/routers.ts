@@ -3,8 +3,9 @@ import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
-import { createSignup } from "./db";
+import { createSignup, getAllSignups } from "./db";
 import { sendWelcomeEmail } from "./email";
+import { getCampaignStats } from "./emailCampaign";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -17,6 +18,87 @@ export const appRouter = router({
       return {
         success: true,
       } as const;
+    }),
+  }),
+
+  admin: router({
+    analytics: publicProcedure.query(async ({ ctx }) => {
+      // TODO: Add admin auth check
+      if (!ctx.user || ctx.user.role !== 'admin') {
+        throw new Error('Unauthorized');
+      }
+
+      const signups = await getAllSignups();
+      const campaignStats = await getCampaignStats();
+
+      // Calculate analytics
+      const totalSignups = signups.length;
+      const signupsByTier = signups.reduce((acc: Record<string, number>, s) => {
+        acc[s.tier] = (acc[s.tier] || 0) + 1;
+        return acc;
+      }, {});
+      const signupsByFacilityType = signups.reduce((acc: Record<string, number>, s) => {
+        acc[s.facilityType] = (acc[s.facilityType] || 0) + 1;
+        return acc;
+      }, {});
+      const totalResidents = signups.reduce((sum, s) => sum + s.residentCount, 0);
+      const avgResidentsPerFacility = totalSignups > 0 ? Math.round(totalResidents / totalSignups) : 0;
+
+      // Interested features analysis
+      const featureCounts: Record<string, number> = {};
+      signups.forEach((s) => {
+        if (s.interestedFeatures) {
+          try {
+            const features = JSON.parse(s.interestedFeatures);
+            features.forEach((f: string) => {
+              featureCounts[f] = (featureCounts[f] || 0) + 1;
+            });
+          } catch {}
+        }
+      });
+
+      // Signup trend (last 30 days)
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      const recentSignups = signups.filter((s) => new Date(s.createdAt) >= thirtyDaysAgo);
+      const signupsByDay: Record<string, number> = {};
+      recentSignups.forEach((s) => {
+        const date = new Date(s.createdAt).toISOString().split('T')[0];
+        signupsByDay[date] = (signupsByDay[date] || 0) + 1;
+      });
+
+      return {
+        totalSignups,
+        signupsByTier,
+        signupsByFacilityType,
+        totalResidents,
+        avgResidentsPerFacility,
+        featureCounts,
+        signupsByDay,
+        campaignStats,
+        recentSignups: signups.slice(0, 10).map((s) => ({
+          id: s.id,
+          name: `${s.firstName} ${s.lastName}`,
+          email: s.email,
+          facilityName: s.facilityName,
+          facilityType: s.facilityType,
+          tier: s.tier,
+          createdAt: s.createdAt,
+        })),
+      };
+    }),
+
+    signups: publicProcedure.query(async ({ ctx }) => {
+      // TODO: Add admin auth check
+      if (!ctx.user || ctx.user.role !== 'admin') {
+        throw new Error('Unauthorized');
+      }
+
+      const signups = await getAllSignups();
+      return signups.map((s) => ({
+        ...s,
+        interestedFeatures: s.interestedFeatures ? JSON.parse(s.interestedFeatures) : [],
+      }));
     }),
   }),
 

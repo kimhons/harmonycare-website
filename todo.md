@@ -240,3 +240,16 @@
 - [x] Test drip campaign flow
 - [x] Create campaign documentation
 - [x] Create manual run script
+
+## Admin Dashboard
+- [x] Create admin analytics API endpoints
+- [x] Build admin dashboard page at /admin
+- [x] Add signup statistics cards (total, by tier, by facility type)
+- [x] Add email campaign statistics (sent, pending, opt-outs)
+- [x] Create signups data table with filters and search
+- [x] Add charts for signup trends over time
+- [x] Add facility type distribution chart
+- [x] Add tier distribution chart
+- [x] Add interested features analysis
+- [x] Implement admin authentication/authorization (checks user.role === 'admin')
+- [x] Test admin dashboard functionality
