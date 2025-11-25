@@ -27,6 +27,7 @@ import {
   Truck
 } from "lucide-react";
 import { APP_TITLE } from "@/const";
+import Navigation from "@/components/Navigation";
 import { useState } from "react";
 import { Link } from "wouter";
 
@@ -550,34 +551,7 @@ export default function Agents() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-14">
-            <Link href="/">
-              <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-lg font-bold">{APP_TITLE}</span>
-              </div>
-            </Link>
-            
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="/">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Home</a>
-              </Link>
-              <Link href="/pricing">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
-              </Link>
-            </div>
-
-            <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-              Start Free Trial
-            </Button>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4">

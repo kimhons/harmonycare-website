@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Sparkles, Shield, Brain, Calendar, Users, FileText, TrendingUp, Award, CheckCircle2, Play, ArrowRight, Star, Menu, X, Briefcase, UserCheck, Wrench, UtensilsCrossed, Truck } from "lucide-react";
+import { Heart, Sparkles, Shield, Brain, Calendar, Users, FileText, TrendingUp, Award, CheckCircle2, Play, ArrowRight, Star, Briefcase, UserCheck, Wrench, UtensilsCrossed, Truck } from "lucide-react";
 import { APP_TITLE } from "@/const";
 import VideoModal from "@/components/VideoModal";
+import Navigation from "@/components/Navigation";
 import { useState } from "react";
 import { Link } from "wouter";
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const agents = [
     {
@@ -123,133 +123,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-white/10">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between h-14">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Heart className="w-4 h-4 text-white" />
-              </div>
-              <span className="text-lg font-bold">{APP_TITLE}</span>
-            </div>
-            
-            <div className="hidden md:flex items-center gap-8">
-              <Link href="/agents"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">AI Agents</a></Link>
-              <Link href="/solutions/group-homes"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Solutions</a></Link>
-              <Link href="/pricing"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a></Link>
-              <a href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Resources</a>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Link href="/demo">
-                <Button className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-                  Schedule Demo
-                </Button>
-              </Link>
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 hover:bg-accent/10 rounded-lg transition-colors"
-                aria-label="Toggle menu"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu Slide-out Panel */}
-      <div
-        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${
-          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        {/* Backdrop */}
-        <div
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-        
-        {/* Slide-out Panel */}
-        <div
-          className={`absolute top-14 right-0 bottom-0 w-[280px] bg-card border-l border-border shadow-2xl transform transition-transform duration-300 ease-out ${
-            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex flex-col h-full p-6">
-            {/* Navigation Links */}
-            <nav className="flex flex-col gap-1 mb-8">
-              <a
-                href="/agents"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
-              >
-                AI Agents
-              </a>
-              <a
-                href="#solutions"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
-              >
-                Solutions
-              </a>
-              <a
-                href="/pricing"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
-              >
-                Pricing
-              </a>
-              <a
-                href="#resources"
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
-              >
-                Resources
-              </a>
-            </nav>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col gap-3 mt-auto">
-              <Link href="/demo">
-                <Button
-                  className="bg-primary hover:bg-primary/90 text-white rounded-full w-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Schedule Demo
-                </Button>
-              </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="w-full rounded-full border-border hover:bg-accent/10"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Start Free Trial
-              </Button>
-            </div>
-
-            {/* Trust Badges */}
-            <div className="mt-6 pt-6 border-t border-border">
-              <div className="flex flex-col gap-2 text-xs text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3 h-3 text-green-500" />
-                  <span>HIPAA Compliant</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3 h-3 text-green-500" />
-                  <span>SOC 2 Certified</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3 h-3 text-green-500" />
-                  <span>99.9% Uptime</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navigation />
 
       {/* Hero Section - Happy Medical Theme */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-blue-100/20 pt-14">
