@@ -19,7 +19,12 @@ import {
   CheckCircle2,
   AlertCircle,
   Clock,
-  Zap
+  Zap,
+  Briefcase,
+  UserCheck,
+  Wrench,
+  UtensilsCrossed,
+  Truck
 } from "lucide-react";
 import { APP_TITLE } from "@/const";
 import { useState } from "react";
@@ -29,11 +34,11 @@ export default function Agents() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const categories = [
-    { id: "all", name: "All Agents", count: 15 },
-    { id: "clinical", name: "Clinical Care", count: 5 },
-    { id: "operations", name: "Operations", count: 4 },
+    { id: "all", name: "All Agents", count: 20 },
+    { id: "clinical", name: "Clinical Care", count: 6 },
+    { id: "operations", name: "Operations", count: 7 },
     { id: "compliance", name: "Compliance & Quality", count: 3 },
-    { id: "engagement", name: "Engagement", count: 3 },
+    { id: "engagement", name: "Engagement", count: 4 },
   ];
 
   const agents = [
@@ -411,6 +416,131 @@ export default function Agents() {
         "Investigation and corrective action tracking",
         "Regulatory report generation"
       ]
+    },
+    {
+      id: 16,
+      name: "Executive Assistant",
+      tagline: "Strategic Planning & Board Reporting",
+      category: "operations",
+      icon: Briefcase,
+      color: "from-violet-500 to-purple-600",
+      description: "Executive Assistant provides C-suite and board members with strategic insights, automated reporting, and data-driven recommendations. It consolidates facility performance across all metrics into executive dashboards and generates board-ready presentations.",
+      useCases: [
+        "Generate monthly board reports with KPIs and trends",
+        "Create strategic planning recommendations based on data analysis",
+        "Monitor multi-site performance across all facilities",
+        "Prepare investor updates and financial summaries"
+      ],
+      impact: {
+        metric: "80% faster reporting",
+        detail: "Reduces executive reporting time from 20 hours to 4 hours per month"
+      },
+      features: [
+        "Executive dashboard with real-time KPIs",
+        "Automated board presentation generation",
+        "Multi-site performance comparison",
+        "Strategic planning recommendations"
+      ]
+    },
+    {
+      id: 17,
+      name: "HR Manager",
+      tagline: "Recruitment & Employee Relations",
+      category: "operations",
+      icon: UserCheck,
+      color: "from-rose-500 to-pink-600",
+      description: "HR Manager streamlines the entire employee lifecycle from recruitment to offboarding. It automates job postings, screens candidates, manages onboarding, tracks performance reviews, and handles employee relations issues with built-in HR best practices.",
+      useCases: [
+        "Post job openings to multiple platforms automatically",
+        "Screen resumes and rank candidates by fit",
+        "Automate onboarding checklists and new hire paperwork",
+        "Schedule and track performance reviews and 1-on-1s"
+      ],
+      impact: {
+        metric: "60% faster hiring",
+        detail: "Reduces time-to-hire from 45 days to 18 days on average"
+      },
+      features: [
+        "Automated job posting to Indeed, LinkedIn, ZipRecruiter",
+        "AI-powered resume screening and ranking",
+        "Digital onboarding workflows",
+        "Performance review tracking and reminders"
+      ]
+    },
+    {
+      id: 18,
+      name: "Maintenance Coordinator",
+      tagline: "Facility Maintenance & Safety Inspections",
+      category: "operations",
+      icon: Wrench,
+      color: "from-amber-500 to-yellow-600",
+      description: "Maintenance Coordinator ensures your facility stays safe and operational by managing work orders, scheduling preventive maintenance, tracking equipment lifecycles, and conducting safety inspections. It prevents costly emergency repairs through proactive maintenance scheduling.",
+      useCases: [
+        "Create and assign work orders from staff requests",
+        "Schedule preventive maintenance for HVAC, plumbing, electrical",
+        "Track equipment warranties and replacement schedules",
+        "Conduct monthly safety inspections with digital checklists"
+      ],
+      impact: {
+        metric: "40% fewer emergencies",
+        detail: "Proactive maintenance reduces emergency repair calls by 40%"
+      },
+      features: [
+        "Digital work order management",
+        "Preventive maintenance scheduling",
+        "Equipment lifecycle tracking",
+        "Safety inspection checklists"
+      ]
+    },
+    {
+      id: 19,
+      name: "Nutrition Specialist",
+      tagline: "Menu Planning & Dietary Compliance",
+      category: "clinical",
+      icon: UtensilsCrossed,
+      color: "from-lime-500 to-green-600",
+      description: "Nutrition Specialist manages all aspects of food service from menu planning to meal delivery. It ensures dietary restrictions are followed, generates shopping lists, tracks food costs, and monitors nutritional adequacy for each resident's specific needs.",
+      useCases: [
+        "Create weekly menus that meet dietary restrictions and preferences",
+        "Generate automated shopping lists and track food inventory",
+        "Monitor nutritional intake for residents with special diets",
+        "Alert staff to allergy conflicts and dietary violations"
+      ],
+      impact: {
+        metric: "100% diet compliance",
+        detail: "Zero dietary violations and improved resident satisfaction with meals"
+      },
+      features: [
+        "Automated menu planning with dietary restrictions",
+        "Shopping list generation and inventory tracking",
+        "Nutritional analysis and reporting",
+        "Allergy and preference management"
+      ]
+    },
+    {
+      id: 20,
+      name: "Transportation Manager",
+      tagline: "Vehicle Scheduling & Appointment Coordination",
+      category: "engagement",
+      icon: Truck,
+      color: "from-sky-500 to-blue-600",
+      description: "Transportation Manager coordinates all resident transportation needs including medical appointments, family visits, community outings, and recreational activities. It optimizes routes, manages driver schedules, tracks vehicle maintenance, and ensures no resident misses an important appointment.",
+      useCases: [
+        "Schedule medical appointments and coordinate transportation",
+        "Optimize routes for multiple residents going to appointments",
+        "Track vehicle maintenance and inspection schedules",
+        "Send reminders to families about pickup/drop-off times"
+      ],
+      impact: {
+        metric: "Zero missed rides",
+        detail: "100% on-time transportation with automated scheduling and reminders"
+      },
+      features: [
+        "Appointment scheduling with auto-transportation booking",
+        "Route optimization for multiple stops",
+        "Driver schedule management",
+        "Vehicle maintenance tracking"
+      ]
     }
   ];
 
@@ -463,7 +593,7 @@ export default function Agents() {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            15 specialized AI agents working 24/7 to automate workflows, predict crises, 
+            20 specialized AI agents working 24/7 to automate workflows, predict crises, 
             ensure compliance, and elevate care quality. Each agent is a domain expert 
             designed to solve specific challenges in residential care management.
           </p>
@@ -564,7 +694,7 @@ export default function Agents() {
             Ready to Deploy Your AI Care Team?
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            All 15 agents work together seamlessly to transform your facility operations. 
+            All 20 agents work together seamlessly to transform your facility operations. 
             Start your free trial and see the difference in days, not months.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -577,7 +707,7 @@ export default function Agents() {
             </Button>
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
-            No credit card required • All 15 agents included • Cancel anytime
+            No credit card required • All 20 agents included • Cancel anytime
           </p>
         </div>
       </section>
@@ -602,7 +732,7 @@ export default function Agents() {
               <h4 className="font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/"><a className="hover:text-foreground transition-colors">Overview</a></Link></li>
-                <li><Link href="/agents"><a className="hover:text-foreground transition-colors">15 AI Agents</a></Link></li>
+                <li><Link href="/agents"><a className="hover:text-foreground transition-colors">20 AI Agents</a></Link></li>
                 <li><Link href="/pricing"><a className="hover:text-foreground transition-colors">Pricing</a></Link></li>
               </ul>
             </div>

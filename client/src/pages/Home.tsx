@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Sparkles, Shield, Brain, Calendar, Users, FileText, TrendingUp, Award, CheckCircle2, Play, ArrowRight, Star, Menu, X } from "lucide-react";
+import { Heart, Sparkles, Shield, Brain, Calendar, Users, FileText, TrendingUp, Award, CheckCircle2, Play, ArrowRight, Star, Menu, X, Briefcase, UserCheck, Wrench, UtensilsCrossed, Truck } from "lucide-react";
 import { APP_TITLE } from "@/const";
 import VideoModal from "@/components/VideoModal";
 import { useState } from "react";
@@ -43,6 +43,41 @@ export default function Home() {
       description: "Intelligent scheduling optimizer",
       impact: "75% faster scheduling",
       color: "from-indigo-500 to-blue-500"
+    },
+    {
+      name: "Executive Assistant",
+      icon: Briefcase,
+      description: "Strategic planning & board reporting",
+      impact: "Executive insights",
+      color: "from-violet-500 to-purple-500"
+    },
+    {
+      name: "HR Manager",
+      icon: UserCheck,
+      description: "Recruitment & employee relations",
+      impact: "60% faster hiring",
+      color: "from-rose-500 to-pink-500"
+    },
+    {
+      name: "Maintenance Coordinator",
+      icon: Wrench,
+      description: "Facility maintenance & safety",
+      impact: "Proactive repairs",
+      color: "from-amber-500 to-yellow-500"
+    },
+    {
+      name: "Nutrition Specialist",
+      icon: UtensilsCrossed,
+      description: "Menu planning & dietary tracking",
+      impact: "100% diet compliance",
+      color: "from-lime-500 to-green-500"
+    },
+    {
+      name: "Transportation Manager",
+      icon: Truck,
+      description: "Vehicle scheduling & appointments",
+      impact: "Zero missed rides",
+      color: "from-sky-500 to-blue-500"
     }
   ];
 
@@ -230,7 +265,7 @@ export default function Home() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 rounded-full px-5 py-2 mb-8 animate-fade-in">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-accent">15 AI Agents • Available Now</span>
+              <span className="text-sm font-medium text-accent">20 AI Agents • Available Now</span>
             </div>
 
             {/* Headline */}
@@ -243,7 +278,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 animate-fade-in-up delay-100">
-              15 autonomous AI agents working 24/7 to reduce paperwork by 70%, ensure 100% compliance, and let caregivers focus on what matters most: caring.
+              20 autonomous AI agents working 24/7 to reduce paperwork by 70%, ensure 100% compliance, and let caregivers focus on what matters most: caring.
             </p>
 
             {/* Video Container */}
@@ -337,7 +372,7 @@ export default function Home() {
               <span className="text-sm font-medium text-primary">Meet Your Digital Care Team</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              15 AI Agents Working
+              20 AI Agents Working
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">24/7 For Your Facility</span>
             </h2>
@@ -371,7 +406,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link href="/agents">
               <Button variant="outline" size="lg" className="rounded-full">
-                Explore All 15 Agents
+                Explore All 20 Agents
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
@@ -514,7 +549,7 @@ export default function Home() {
               <h4 className="font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#" className="hover:text-foreground transition-colors">Overview</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">15 AI Agents</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">20 AI Agents</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Features</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Security</a></li>
               </ul>

@@ -231,7 +231,7 @@ export default function Demo() {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Get a personalized walkthrough of how our 15 AI agents can transform your facility operations. 
+            Get a personalized walkthrough of how our 20 AI agents can transform your facility operations. 
             No commitment required.
           </p>
         </div>
@@ -530,7 +530,7 @@ export default function Demo() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span>Live walkthrough of the 15 AI agents in action</span>
+                      <span>Live walkthrough of the 20 AI agents in action</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />

@@ -59,7 +59,7 @@ export default function Pricing() {
       description: "Most popular for mid-sized facilities needing comprehensive automation",
       residents: "11-50 residents",
       features: [
-        "All 15 AI Agents (complete suite)",
+        "All 20 AI Agents (complete suite)",
         "Advanced care planning with AI suggestions",
         "Predictive health monitoring",
         "Family engagement portal",
@@ -118,7 +118,7 @@ export default function Pricing() {
     },
     {
       question: "What's included in the free trial?",
-      answer: "The 30-day free trial includes full access to all features in the Professional tier, including all 15 AI agents, integrations, and priority support.",
+      answer: "The 30-day free trial includes full access to all features in the Professional tier, including all 20 AI agents, integrations, and priority support.",
     },
     {
       question: "Do you offer discounts for multiple facilities?",
@@ -544,7 +544,7 @@ export default function Pricing() {
               <h4 className="font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><Link href="/"><a className="hover:text-foreground transition-colors">Overview</a></Link></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">15 AI Agents</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">20 AI Agents</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Features</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Integrations</a></li>
               </ul>

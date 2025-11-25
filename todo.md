@@ -87,3 +87,15 @@
 - [x] Change hero headline to "Transform Your Resident Care Facility"
 - [x] Update ThemeProvider default theme to "light"
 - [x] Test all pages for color consistency
+
+## Agent Expansion (15 → 20 Agents)
+- [x] Add 5 new agents to homepage agent grid
+- [x] Create detailed cards for Executive Assistant agent
+- [x] Create detailed cards for HR Manager agent
+- [x] Create detailed cards for Maintenance Coordinator agent
+- [x] Create detailed cards for Nutrition Specialist agent
+- [x] Create detailed cards for Transportation Manager agent
+- [x] Update all "15 agents" references to "20 agents" across website
+- [x] Update hero section tagline
+- [x] Update agent count in badges and CTAs
+- [x] Test all pages for consistency
