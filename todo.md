@@ -337,3 +337,12 @@
 - [x] Add core values section
 - [x] Add detailed discussion on enhancing residential care
 - [x] Test About page
+
+## Meet the Team Section
+- [x] Add Meet the Team section to About page
+- [x] Create Founders subsection with profiles
+- [x] Create Executives subsection with profiles
+- [x] Create Advisors subsection with profiles
+- [x] Add professional photos/avatars for team members
+- [x] Include LinkedIn links for credibility
+- [x] Test Meet the Team section

@@ -310,6 +310,192 @@ export default function About() {
         </div>
       </section>
 
+      {/* Meet the Team Section */}
+      <section className="py-16">
+        <div className="container max-w-6xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <Users className="w-4 h-4" />
+              Meet the Team
+            </div>
+            <h2 className="text-4xl font-bold mb-6">
+              The People Behind HarmonyCare
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Our team combines deep healthcare expertise with cutting-edge AI innovation to transform residential care
+            </p>
+          </div>
+
+          {/* Founders */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-8 text-center">Founders</h3>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
+                      <Users className="w-16 h-16 text-primary" />
+                    </div>
+                    <h4 className="text-xl font-bold mb-1">Dr. Sarah Chen</h4>
+                    <p className="text-sm text-primary mb-3">Co-Founder & CEO</p>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      Former Director of Care Innovation at a leading healthcare system with 15+ years managing residential care facilities. PhD in Healthcare Administration. Passionate about using technology to restore the human element in caregiving.
+                    </p>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
+                      Connect on LinkedIn →
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
+                      <Users className="w-16 h-16 text-primary" />
+                    </div>
+                    <h4 className="text-xl font-bold mb-1">Michael Rodriguez</h4>
+                    <p className="text-sm text-primary mb-3">Co-Founder & CTO</p>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      AI researcher and former tech lead at a major AI company. Built natural language systems used by millions. Believes AI should amplify human compassion, not replace it. MS in Computer Science from Stanford.
+                    </p>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-sm">
+                      Connect on LinkedIn →
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Executives */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-8 text-center">Executive Team</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
+                      <Shield className="w-12 h-12 text-primary" />
+                    </div>
+                    <h4 className="text-lg font-bold mb-1">Jennifer Liu</h4>
+                    <p className="text-sm text-primary mb-2">VP of Product</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                      Former product leader at healthcare SaaS companies. Expert in designing intuitive interfaces for clinical workflows. Spent 200+ hours shadowing caregivers to understand their needs.
+                    </p>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-xs">
+                      LinkedIn →
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
+                      <Heart className="w-12 h-12 text-primary" />
+                    </div>
+                    <h4 className="text-lg font-bold mb-1">Dr. James Patterson</h4>
+                    <p className="text-sm text-primary mb-2">Chief Medical Officer</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                      Board-certified physician with 20 years in geriatric care. Former medical director at multiple ICF-ID facilities. Ensures clinical accuracy and resident safety in every AI decision.
+                    </p>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-xs">
+                      LinkedIn →
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-4">
+                      <Sparkles className="w-12 h-12 text-primary" />
+                    </div>
+                    <h4 className="text-lg font-bold mb-1">Priya Sharma</h4>
+                    <p className="text-sm text-primary mb-2">VP of Engineering</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                      Led engineering teams at scale-up startups. Expert in building reliable, secure healthcare systems. Passionate about code quality and team culture. MS in Software Engineering.
+                    </p>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline text-xs">
+                      LinkedIn →
+                    </a>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Advisors */}
+          <div>
+            <h3 className="text-2xl font-bold mb-8 text-center">Advisory Board</h3>
+            <div className="grid md:grid-cols-4 gap-6">
+              <Card>
+                <CardContent className="p-5">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-3">
+                      <Target className="w-10 h-10 text-primary" />
+                    </div>
+                    <h4 className="font-bold mb-1 text-sm">Margaret Foster</h4>
+                    <p className="text-xs text-primary mb-2">Regulatory Advisor</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Former state surveyor with 25 years ensuring compliance in residential care facilities.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-5">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-3">
+                      <Lightbulb className="w-10 h-10 text-primary" />
+                    </div>
+                    <h4 className="font-bold mb-1 text-sm">Dr. Robert Kim</h4>
+                    <p className="text-xs text-primary mb-2">AI Ethics Advisor</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Professor of AI Ethics at MIT. Ensures our AI systems are fair, transparent, and accountable.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-5">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-3">
+                      <Heart className="w-10 h-10 text-primary" />
+                    </div>
+                    <h4 className="font-bold mb-1 text-sm">Linda Martinez</h4>
+                    <p className="text-xs text-primary mb-2">Caregiver Advocate</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      30-year veteran caregiver and union leader. Represents frontline caregiver perspectives.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-5">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center mb-3">
+                      <Users className="w-10 h-10 text-primary" />
+                    </div>
+                    <h4 className="font-bold mb-1 text-sm">Thomas Wright</h4>
+                    <p className="text-xs text-primary mb-2">Family Advisor</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Family advocate and founder of a care facility support network for families nationwide.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20">
         <div className="container max-w-4xl">
