@@ -45,3 +45,6 @@
 
 ## Bugs
 - [x] Fix Vite WebSocket HMR connection issue
+
+## Mobile Improvements
+- [x] Implement responsive hamburger menu with slide-out panel

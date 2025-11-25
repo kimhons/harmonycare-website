@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Heart, Sparkles, Shield, Brain, Calendar, Users, FileText, TrendingUp, Award, CheckCircle2, Play, ArrowRight, Star } from "lucide-react";
+import { Heart, Sparkles, Shield, Brain, Calendar, Users, FileText, TrendingUp, Award, CheckCircle2, Play, ArrowRight, Star, Menu, X } from "lucide-react";
 import { APP_TITLE } from "@/const";
+import { useState } from "react";
 
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const agents = [
     {
       name: "DocuBot",
@@ -101,12 +103,112 @@ export default function Home() {
               <a href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Resources</a>
             </div>
 
-            <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
-              Schedule Demo
-            </Button>
+            <div className="flex items-center gap-3">
+              <Button className="hidden sm:inline-flex bg-primary hover:bg-primary/90 text-white rounded-full px-6">
+                Schedule Demo
+              </Button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 hover:bg-accent/10 rounded-lg transition-colors"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu Slide-out Panel */}
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${
+          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+        
+        {/* Slide-out Panel */}
+        <div
+          className={`absolute top-14 right-0 bottom-0 w-[280px] bg-card border-l border-border shadow-2xl transform transition-transform duration-300 ease-out ${
+            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex flex-col h-full p-6">
+            {/* Navigation Links */}
+            <nav className="flex flex-col gap-1 mb-8">
+              <a
+                href="#product"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
+              >
+                Product
+              </a>
+              <a
+                href="#solutions"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
+              >
+                Solutions
+              </a>
+              <a
+                href="#pricing"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
+              >
+                Pricing
+              </a>
+              <a
+                href="#resources"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 text-base font-medium text-foreground hover:bg-accent/10 rounded-lg transition-colors"
+              >
+                Resources
+              </a>
+            </nav>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col gap-3 mt-auto">
+              <Button
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Schedule Demo
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full rounded-full border-border hover:bg-accent/10"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Start Free Trial
+              </Button>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-6 pt-6 border-t border-border">
+              <div className="flex flex-col gap-2 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3 h-3 text-green-500" />
+                  <span>HIPAA Compliant</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3 h-3 text-green-500" />
+                  <span>SOC 2 Certified</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-3 h-3 text-green-500" />
+                  <span>99.9% Uptime</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Hero Section - Dark with Video */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-[#1a1a2e] to-[#0f0f1a] pt-14">
