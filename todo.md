@@ -139,3 +139,19 @@
 - [x] Update IcfId page to use new Navigation component
 - [x] Test dropdown on desktop and mobile
 - [x] Ensure proper z-index and positioning
+
+## Founding Member Pricing Campaign
+- [x] Calculate marked-up base prices (75% increase)
+- [x] Calculate founding member prices with tiered discounts (50%/55%/60%)
+- [x] Update Pricing page with founding member campaign
+- [x] Add strikethrough regular pricing with founding member pricing
+- [x] Include 40% off onboarding fees messaging
+- [x] Include 40% off yearly maintenance fees messaging
+- [x] Add scarcity elements (limited spots, deadline)
+- [x] Add exclusive founding member benefits
+- [x] Add founding member badges and visual emphasis
+- [x] Update Group Homes solutions page pricing
+- [x] Update ICF-ID solutions page pricing
+- [x] Update homepage pricing references
+- [x] Add founding member badges and visual emphasis
+- [x] Test all pricing displays across pages

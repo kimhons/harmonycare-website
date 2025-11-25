@@ -592,14 +592,21 @@ export default function IcfId() {
       <section className="py-20 px-4 bg-gradient-to-b from-accent/5 to-background">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-amber-700 dark:text-amber-400 text-sm font-semibold mb-6 animate-pulse">
+              <Sparkles className="w-4 h-4" />
+              <span>🔥 Founding Member Pricing - Up to 60% Off Forever</span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Pricing for{" "}
+              Lock In{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                ICF-ID Facilities
+                Founding Member Rates
               </span>
             </h2>
-            <p className="text-xl text-muted-foreground">
-              Comprehensive platform at a fraction of enterprise software costs
+            <p className="text-xl text-muted-foreground mb-2">
+              Save <strong className="text-foreground">55-60% off</strong> regular pricing forever + <strong className="text-foreground">40% off onboarding & maintenance</strong>
+            </p>
+            <p className="text-sm text-destructive font-semibold">
+              ⏰ Only 23 founding member spots remaining
             </p>
           </div>
 
@@ -607,12 +614,23 @@ export default function IcfId() {
             <Card className="p-8 border-2 border-primary">
               <div className="text-center mb-6">
                 <Badge className="mb-4">Most Popular for ICF-ID</Badge>
-                <h3 className="text-2xl font-bold mb-2">Professional Plan</h3>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-bold text-primary">$79</span>
-                  <span className="text-muted-foreground">/resident/month</span>
+                <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-bold mb-3">
+                  <Sparkles className="w-3 h-3" />
+                  <span>55% OFF - Founding Member</span>
                 </div>
-                <p className="text-sm text-muted-foreground">For 11-50 residents</p>
+                <h3 className="text-2xl font-bold mb-2">Professional Plan</h3>
+                <div className="mb-3">
+                  <div className="flex items-center justify-center gap-3 mb-1">
+                    <span className="text-xl text-muted-foreground line-through">$138</span>
+                    <span className="px-2 py-1 bg-destructive/10 text-destructive text-xs font-bold rounded">-55%</span>
+                  </div>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-5xl font-bold text-primary">$62</span>
+                    <span className="text-muted-foreground">/resident/month</span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mb-1">For 11-50 residents</p>
+                <p className="text-xs text-green-600 dark:text-green-400 font-semibold">✓ Price locked in forever</p>
               </div>
 
               <div className="space-y-3 mb-6">
@@ -648,10 +666,14 @@ export default function IcfId() {
 
               <div className="bg-accent/30 rounded-lg p-4 mb-6">
                 <p className="text-sm font-semibold mb-2">Example: 30-resident ICF-ID</p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-bold text-primary">$2,370</span>
-                  <span className="text-sm text-muted-foreground">/month total</span>
+                <div className="mb-2">
+                  <span className="text-sm text-muted-foreground line-through">$4,140/month regular</span>
                 </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-bold text-primary">$1,860</span>
+                  <span className="text-sm text-muted-foreground">/month founding member</span>
+                </div>
+                <p className="text-xs text-green-600 dark:text-green-400 font-semibold mt-1">Save $2,280/month = $27,360/year</p>
               </div>
 
               <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-full" size="lg">
@@ -661,12 +683,23 @@ export default function IcfId() {
 
             <Card className="p-8">
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold mb-2">Enterprise Plan</h3>
-                <div className="flex items-baseline justify-center gap-2 mb-2">
-                  <span className="text-5xl font-bold text-primary">$99</span>
-                  <span className="text-muted-foreground">/resident/month</span>
+                <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-400 text-xs font-bold mb-3">
+                  <Sparkles className="w-3 h-3" />
+                  <span>60% OFF - Founding Member</span>
                 </div>
-                <p className="text-sm text-muted-foreground">For 50+ residents</p>
+                <h3 className="text-2xl font-bold mb-2">Enterprise Plan</h3>
+                <div className="mb-3">
+                  <div className="flex items-center justify-center gap-3 mb-1">
+                    <span className="text-xl text-muted-foreground line-through">$173</span>
+                    <span className="px-2 py-1 bg-destructive/10 text-destructive text-xs font-bold rounded">-60%</span>
+                  </div>
+                  <div className="flex items-baseline justify-center gap-2">
+                    <span className="text-5xl font-bold text-primary">$69</span>
+                    <span className="text-muted-foreground">/resident/month</span>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mb-1">For 50+ residents</p>
+                <p className="text-xs text-green-600 dark:text-green-400 font-semibold">✓ Price locked in forever</p>
               </div>
 
               <div className="space-y-3 mb-6">

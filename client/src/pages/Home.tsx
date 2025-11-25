@@ -353,14 +353,25 @@ export default function Home() {
       <section className="py-24 bg-card" id="pricing">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-amber-500/30 text-amber-700 dark:text-amber-400 text-sm font-semibold mb-6 animate-pulse">
+              <Sparkles className="w-4 h-4" />
+              <span>🔥 Founding Member Pricing - Limited Time</span>
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Transparent, Affordable Pricing
+              Lock In{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Founding Member Rates
+              </span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Starting at <span className="text-primary font-bold">$59/resident/month</span>
+            <p className="text-xl text-muted-foreground mb-4">
+              <span className="text-muted-foreground line-through">$103-$173/resident</span>{" "}
+              <span className="text-primary font-bold">$52-$69/resident/month</span>
             </p>
-            <p className="text-lg text-muted-foreground mb-12">
-              50% lower cost than enterprise competitors, with 10x better technology
+            <p className="text-lg text-muted-foreground mb-2">
+              <strong className="text-foreground">Save 50-60% off</strong> regular pricing forever + <strong className="text-foreground">40% off onboarding & maintenance</strong>
+            </p>
+            <p className="text-sm text-destructive font-semibold mb-12">
+              ⏰ Only 23 founding member spots remaining
             </p>
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8">
               View Pricing Details
