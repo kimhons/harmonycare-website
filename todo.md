@@ -263,3 +263,27 @@
 - [x] Create source/medium/campaign breakdown charts
 - [x] Add conversion rate by channel analysis
 - [x] Test UTM tracking with sample URLs
+
+## CSV Export Functionality
+- [x] Create CSV generation utility function
+- [x] Add export API endpoint for signups data
+- [x] Add export button to admin dashboard
+- [x] Include all signup fields and UTM attribution in export
+- [ ] Test CSV download functionality
+
+## Referral Program
+- [x] Add referrals table to database schema
+- [x] Add referral code field to signups table
+- [x] Create referral code generation function
+- [ ] Build referral tracking API endpoints
+- [ ] Add referral code input to signup form
+- [ ] Create referral dashboard page for founding members
+- [ ] Display referral stats and rewards
+- [ ] Test referral tracking flow
+
+## Vercel Cron Job for Email Campaign
+- [ ] Create vercel.json configuration file
+- [ ] Set up cron schedule for 9am EST daily
+- [ ] Create API endpoint for cron to call
+- [ ] Test cron configuration locally
+- [ ] Document deployment instructions

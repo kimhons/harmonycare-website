@@ -54,7 +54,28 @@ export const signups = mysqlTable("signups", {
   utmCampaign: varchar("utmCampaign", { length: 100 }), // e.g., founding_member_launch
   utmTerm: varchar("utmTerm", { length: 100 }), // e.g., care+management+software
   utmContent: varchar("utmContent", { length: 100 }), // e.g., hero_cta, pricing_button
+  
+  // Referral tracking
+  referralCode: varchar("referralCode", { length: 20 }), // Referral code used during signup
+  ownReferralCode: varchar("ownReferralCode", { length: 20 }).unique(), // Unique code for this user to share
 });
 
 export type Signup = typeof signups.$inferSelect;
 export type InsertSignup = typeof signups.$inferInsert;
+
+/**
+ * Referrals table to track referral relationships and rewards
+ */
+export const referrals = mysqlTable("referrals", {
+  id: int("id").autoincrement().primaryKey(),
+  referrerSignupId: int("referrerSignupId").notNull(), // ID of the person who referred
+  referredSignupId: int("referredSignupId").notNull(), // ID of the person who was referred
+  referralCode: varchar("referralCode", { length: 20 }).notNull(), // Code that was used
+  rewardStatus: varchar("rewardStatus", { length: 50 }).default("pending").notNull(), // pending, applied, claimed
+  rewardType: varchar("rewardType", { length: 50 }), // discount, credit, upgrade
+  rewardValue: varchar("rewardValue", { length: 100 }), // e.g., "10%", "$50", "free_month"
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Referral = typeof referrals.$inferSelect;
+export type InsertReferral = typeof referrals.$inferInsert;

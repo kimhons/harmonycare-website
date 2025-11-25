@@ -120,6 +120,21 @@ export const appRouter = router({
         interestedFeatures: s.interestedFeatures ? JSON.parse(s.interestedFeatures) : [],
       }));
     }),
+    
+    exportCSV: publicProcedure.query(async ({ ctx }) => {
+      if (!ctx.user || ctx.user.role !== 'admin') {
+        throw new Error('Unauthorized');
+      }
+      
+      const { generateSignupsCSV } = await import('./csvExport');
+      const signups = await getAllSignups();
+      const csvContent = generateSignupsCSV(signups);
+      
+      return {
+        csv: csvContent,
+        filename: `signups_${new Date().toISOString().split('T')[0]}.csv`,
+      };
+    }),
   }),
 
   signup: router({

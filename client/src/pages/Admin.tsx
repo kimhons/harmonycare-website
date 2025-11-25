@@ -3,7 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
-import { Users, Building2, TrendingUp, Mail, BarChart3, Clock } from "lucide-react";
+import { Users, Building2, TrendingUp, Mail, BarChart3, Clock, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 // Auth context not available in static template
 // Will add auth check after upgrading
 import { useEffect } from "react";
@@ -62,9 +64,36 @@ export default function Admin() {
       
       <div className="container mx-auto py-8 px-4">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
-          <p className="text-muted-foreground">Founding Member Analytics & Campaign Statistics</p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
+            <p className="text-muted-foreground">Founding Member Analytics & Campaign Statistics</p>
+          </div>
+          <Button
+            onClick={async () => {
+              try {
+                const utils = trpc.useUtils();
+                const result = await utils.client.admin.exportCSV.query();
+                const blob = new Blob([result.csv], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = result.filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+                toast.success('Signups data exported successfully');
+              } catch (error) {
+                toast.error('Failed to export data');
+                console.error(error);
+              }
+            }}
+            className="flex items-center gap-2"
+          >
+            <Download className="h-4 w-4" />
+            Export CSV
+          </Button>
         </div>
         
         {/* Statistics Cards */}
