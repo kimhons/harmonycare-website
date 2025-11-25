@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Target, Lightbulb, Users, Shield, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Heart, Target, Lightbulb, Users, Shield, Sparkles, ArrowRight, CheckCircle2, Newspaper, Award, ExternalLink } from "lucide-react";
 
 export default function About() {
   return (
@@ -492,6 +492,170 @@ export default function About() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Press & Media Section */}
+      <section className="py-16 bg-accent/5">
+        <div className="container max-w-6xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <Newspaper className="w-4 h-4" />
+              Press & Media
+            </div>
+            <h2 className="text-4xl font-bold mb-6">
+              HarmonyCare in the News
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Recognition from leading healthcare and technology publications
+            </p>
+          </div>
+
+          {/* Awards & Recognition */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold mb-8 text-center">Awards & Recognition</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="border-primary/20">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-500/20 to-amber-500/10 flex items-center justify-center mx-auto mb-4">
+                    <Award className="w-8 h-8 text-amber-600" />
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">Best Healthcare AI Innovation</h4>
+                  <p className="text-sm text-primary mb-2">HealthTech Awards 2024</p>
+                  <p className="text-sm text-muted-foreground">
+                    Recognized for transforming residential care through intelligent automation
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-primary/20">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-500/10 flex items-center justify-center mx-auto mb-4">
+                    <Award className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">Top 10 Startups to Watch</h4>
+                  <p className="text-sm text-primary mb-2">TechCrunch 2024</p>
+                  <p className="text-sm text-muted-foreground">
+                    Featured among the most promising healthcare technology companies
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-primary/20">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500/20 to-green-500/10 flex items-center justify-center mx-auto mb-4">
+                    <Award className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h4 className="font-bold text-lg mb-2">Excellence in Care Innovation</h4>
+                  <p className="text-sm text-primary mb-2">National Care Association 2024</p>
+                  <p className="text-sm text-muted-foreground">
+                    Honored for improving caregiver wellbeing and resident outcomes
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Media Coverage */}
+          <div>
+            <h3 className="text-2xl font-bold mb-8 text-center">Recent Media Coverage</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Newspaper className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-xs text-muted-foreground mb-1">Healthcare IT News • March 2024</p>
+                      <h4 className="font-bold mb-2">"How AI is Giving Caregivers Their Time Back"</h4>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        HarmonyCare's innovative approach to reducing administrative burden is transforming residential care facilities across the country.
+                      </p>
+                      <a href="#" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
+                        Read full article <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Newspaper className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-xs text-muted-foreground mb-1">Forbes • February 2024</p>
+                      <h4 className="font-bold mb-2">"The Future of Residential Care is AI-Powered"</h4>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Forbes profiles HarmonyCare as a leader in applying artificial intelligence to solve the care industry's biggest challenges.
+                      </p>
+                      <a href="#" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
+                        Read full article <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Newspaper className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-xs text-muted-foreground mb-1">VentureBeat • January 2024</p>
+                      <h4 className="font-bold mb-2">"Startup Raises $15M to Revolutionize Care Management"</h4>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        HarmonyCare announces Series A funding to expand its AI platform to thousands of care facilities nationwide.
+                      </p>
+                      <a href="#" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
+                        Read full article <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Newspaper className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-xs text-muted-foreground mb-1">Modern Healthcare • December 2023</p>
+                      <h4 className="font-bold mb-2">"Reducing Caregiver Burnout Through Technology"</h4>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Study shows HarmonyCare users report 70% reduction in administrative stress and improved job satisfaction.
+                      </p>
+                      <a href="#" className="text-sm text-primary hover:underline inline-flex items-center gap-1">
+                        Read full article <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Press Contact */}
+          <div className="mt-12 text-center">
+            <Card className="inline-block">
+              <CardContent className="p-6">
+                <h4 className="font-bold mb-2">Media Inquiries</h4>
+                <p className="text-sm text-muted-foreground mb-3">
+                  For press inquiries, interviews, or additional information
+                </p>
+                <a href="mailto:press@harmonycare.com" className="text-primary hover:underline font-medium">
+                  press@harmonycare.com
+                </a>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
