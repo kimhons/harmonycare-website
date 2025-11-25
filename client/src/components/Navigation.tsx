@@ -56,10 +56,14 @@ export default function Navigation() {
               <Link href="/about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 About
               </Link>
-              <a href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              
+              <Link href="/resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Resources
-              </a>
-            </div>
+              </Link>
+              
+              <Link href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Blog
+              </Link>         </div>
 
             <div className="flex items-center gap-3">
               <Button 
@@ -155,6 +159,14 @@ export default function Navigation() {
               >
                 Resources
               </a>
+              <Link href="/blog">
+                <div 
+                  className="px-4 py-3 rounded-lg text-sm font-medium hover:bg-accent/10 transition-colors cursor-pointer"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Blog
+                </div>
+              </Link>
             </nav>
 
             <div className="mt-auto pt-6 border-t border-border">

@@ -14,6 +14,8 @@ import Signup from "./pages/Signup";
 import Admin from "./pages/Admin";
 import Referrals from "./pages/Referrals";
 import About from "./pages/About";
+import Blog from "./pages/Blog";
+import BlogArticle from "./pages/BlogArticle";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -25,6 +27,8 @@ function Router() {
       <Route path={"/referrals"} component={Referrals} />
       <Route path="/pricing" component={Pricing} />
       <Route path="/about" component={About} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogArticle} />
       <Route path="/agents" component={Agents} />
       <Route path="/demo" component={Demo} />
       <Route path={"/solutions/group-homes"} component={GroupHomes} />
