@@ -136,7 +136,7 @@ export default function Home() {
             
             <div className="hidden md:flex items-center gap-8">
               <Link href="/agents"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">AI Agents</a></Link>
-              <a href="#solutions" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Solutions</a>
+              <Link href="/solutions/group-homes"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Solutions</a></Link>
               <Link href="/pricing"><a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Pricing</a></Link>
               <a href="#resources" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Resources</a>
             </div>
