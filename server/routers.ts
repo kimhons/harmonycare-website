@@ -7,6 +7,7 @@ import { createSignup, getAllSignups } from "./db";
 import { sendWelcomeEmail } from "./email";
 import { getCampaignStats } from "./emailCampaign";
 import { validateReferralCode, createReferral, generateUniqueReferralCode } from "./referral";
+import { getReferralAnalytics } from "./referralAnalytics";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -87,6 +88,9 @@ export const appRouter = router({
         }, {}),
       };
 
+      // Get referral analytics
+      const referralAnalytics = await getReferralAnalytics();
+
       return {
         totalSignups,
         signupsByTier,
@@ -97,6 +101,7 @@ export const appRouter = router({
         signupsByDay,
         campaignStats,
         utmStats,
+        referralAnalytics,
         recentSignups: signups.slice(0, 10).map((s) => ({
           id: s.id,
           name: `${s.firstName} ${s.lastName}`,

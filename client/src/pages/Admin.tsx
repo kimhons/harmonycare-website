@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { trpc } from "@/lib/trpc";
-import { Users, Building2, TrendingUp, Mail, BarChart3, Clock, Download } from "lucide-react";
+import { Users, Building2, TrendingUp, Mail, BarChart3, Clock, Download, Share2, Award, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 // Auth context not available in static template
@@ -298,6 +298,200 @@ export default function Admin() {
             </CardContent>
           </Card>
         </div>
+        
+        {/* Referral Analytics Section */}
+        {analytics.referralAnalytics && (
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Referral Program Analytics</h2>
+            
+            {/* Referral Stats Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Total Referrals</CardTitle>
+                  <Share2 className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">{analytics.referralAnalytics.totalReferrals}</div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Successful conversions
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Active Referrers</CardTitle>
+                  <Award className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">{analytics.referralAnalytics.totalReferrers}</div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Members sharing codes
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Avg Referrals</CardTitle>
+                  <Target className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">{analytics.referralAnalytics.averageReferralsPerReferrer}</div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Per active referrer
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
+                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">{analytics.referralAnalytics.conversionRate}%</div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Codes shared to signups
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+            
+            {/* Top Referrers Table */}
+            <Card className="mb-6">
+              <CardHeader>
+                <CardTitle>Top Referrers</CardTitle>
+                <CardDescription>Founding members driving the most referrals</CardDescription>
+              </CardHeader>
+              <CardContent>
+                {analytics.referralAnalytics.topReferrers.length > 0 ? (
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Rank</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Facility</TableHead>
+                        <TableHead>Referral Code</TableHead>
+                        <TableHead>Tier</TableHead>
+                        <TableHead className="text-right">Total Referrals</TableHead>
+                        <TableHead className="text-right">Conversions</TableHead>
+                        <TableHead className="text-right">Rate</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {analytics.referralAnalytics.topReferrers.map((referrer, index) => (
+                        <TableRow key={referrer.signupId}>
+                          <TableCell className="font-bold">
+                            {index === 0 && '🥇'}
+                            {index === 1 && '🥈'}
+                            {index === 2 && '🥉'}
+                            {index > 2 && `#${index + 1}`}
+                          </TableCell>
+                          <TableCell className="font-medium">{referrer.name}</TableCell>
+                          <TableCell>{referrer.facilityName}</TableCell>
+                          <TableCell>
+                            <Badge variant="secondary" className="font-mono">
+                              {referrer.ownReferralCode}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant="outline">{referrer.tier}</Badge>
+                          </TableCell>
+                          <TableCell className="text-right font-semibold">{referrer.totalReferrals}</TableCell>
+                          <TableCell className="text-right text-green-600">{referrer.successfulConversions}</TableCell>
+                          <TableCell className="text-right">
+                            <Badge variant={referrer.conversionRate === 100 ? "default" : "secondary"}>
+                              {referrer.conversionRate}%
+                            </Badge>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                ) : (
+                  <div className="text-center py-8 text-muted-foreground">
+                    No referrals yet. Referral codes will appear here once founding members start sharing.
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+            
+            {/* Referrals by Tier */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Referrals by Tier</CardTitle>
+                  <CardDescription>Distribution of referred signups by tier</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {Object.keys(analytics.referralAnalytics.referralsByTier).length > 0 ? (
+                    <div className="space-y-4">
+                      {Object.entries(analytics.referralAnalytics.referralsByTier).map(([tier, count]) => {
+                        const percentage = analytics.referralAnalytics.totalReferrals > 0
+                          ? ((count / analytics.referralAnalytics.totalReferrals) * 100).toFixed(1)
+                          : '0';
+                        return (
+                          <div key={tier}>
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="text-sm font-medium">{tier}</span>
+                              <span className="text-sm text-muted-foreground">{count} ({percentage}%)</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-2">
+                              <div
+                                className="bg-purple-600 h-2 rounded-full"
+                                style={{ width: `${percentage}%` }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-muted-foreground">
+                      No referral data available yet
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardHeader>
+                  <CardTitle>Referral Network Growth</CardTitle>
+                  <CardDescription>Referrals over the last 30 days</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  {Object.keys(analytics.referralAnalytics.referralsByDay).length > 0 ? (
+                    <div className="space-y-2">
+                      {Object.entries(analytics.referralAnalytics.referralsByDay)
+                        .sort(([a], [b]) => b.localeCompare(a))
+                        .slice(0, 10)
+                        .map(([date, count]) => (
+                          <div key={date} className="flex items-center justify-between">
+                            <span className="text-sm">{new Date(date).toLocaleDateString()}</span>
+                            <div className="flex items-center gap-2">
+                              <div className="w-32 bg-gray-200 rounded-full h-2">
+                                <div
+                                  className="bg-green-600 h-2 rounded-full"
+                                  style={{ width: `${(count / Math.max(...Object.values(analytics.referralAnalytics.referralsByDay))) * 100}%` }}
+                                />
+                              </div>
+                              <span className="text-sm font-semibold w-8 text-right">{count}</span>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8 text-muted-foreground">
+                      No referral activity in the last 30 days
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        )}
         
         {/* Top Campaigns */}
         <Card className="mb-8">
